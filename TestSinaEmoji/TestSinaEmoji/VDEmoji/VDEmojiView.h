@@ -21,7 +21,7 @@ typedef enum VDEmojiViewStyle{
 
 @protocol VDEmojiViewDelegate;
 
-@interface VDEmojiView : UIWindow<UIScrollViewDelegate>
+@interface VDEmojiView : UIView<UIScrollViewDelegate>
 
 @property (nonatomic,weak) id<VDEmojiViewDelegate> delegateEmoji;
 

@@ -31,6 +31,7 @@
     if (self) {
        
         //self.windowLevel = UIWindowLevelAlert;
+        self.backgroundColor = [UIColor redColor];
         [self addView];
         
     }
@@ -142,6 +143,7 @@
         }
         case VDEmojiViewStyleFullScreen:
         {
+           // self.transform = CGAffineTransformRotate(NULL, M_PI_2);
             break;
         }
             

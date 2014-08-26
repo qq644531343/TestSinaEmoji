@@ -82,7 +82,7 @@
     emojiView.hidden = YES;
     emojiView.delegateEmoji = self;
     emojiView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
-    [self.view.window addSubview:emojiView];
+    [self.view addSubview:emojiView];
     fixedEmojiFrame = emojiView.frame;
     
     label = [[VDEmojiToolLabel alloc] initWithFrame:CGRectNull textField:nil];
@@ -212,10 +212,25 @@
     
 }
 
-#pragma mark - 
+#pragma mark - VDEmojiViewDelegate
+
 -(void)vdEmojiView:(VDEmojiView *)view clickedAtEmoji:(VDEmojiModel *)emodel
 {
     field.text = [NSString stringWithFormat:@"%@%@",field.text,emodel.chs];
+}
+
+#pragma mark -
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
+    {
+        emojiView.style = VDEmojiViewStyleNormal;
+    }else {
+        emojiView.style = VDEmojiViewStyleFullScreen;
+        tableview.frame = CGRectZero;
+        emojiView.frame = CGRectMake(0, 0, emojiView.frame.size.width, emojiView.frame.size.height);
+    }
 }
 
 - (void)didReceiveMemoryWarning
