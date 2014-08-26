@@ -81,7 +81,6 @@
     emojiView = [[VDEmojiView alloc] initWithFrame:CGRectMake(0, screenframe.size.height - keyboardHeight, screenframe.size.width, keyboardHeight)];
     emojiView.hidden = YES;
     emojiView.delegateEmoji = self;
-    emojiView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:emojiView];
     fixedEmojiFrame = emojiView.frame;
     
@@ -117,7 +116,6 @@
 
 -(void)change {
     
-    //NSLog(@"%d",field.isFirstResponder);
     if (field.isFirstResponder) {
         [field resignFirstResponder];
     }else {
@@ -226,10 +224,11 @@
     if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
     {
         emojiView.style = VDEmojiViewStyleNormal;
+        emojiView.frame = fixedEmojiFrame;
     }else {
         emojiView.style = VDEmojiViewStyleFullScreen;
         tableview.frame = CGRectZero;
-        emojiView.frame = CGRectMake(0, 0, emojiView.frame.size.width, emojiView.frame.size.height);
+        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
     }
 }
 

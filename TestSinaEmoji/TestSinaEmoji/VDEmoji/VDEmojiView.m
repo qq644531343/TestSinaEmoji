@@ -115,6 +115,7 @@
             
             NSLog(@"表情页数 : %d",allPageCount);
             _baseScroll.contentSize = CGSizeMake(320*allPageCount, self.frame.size.height);
+            _baseScroll.frame = self.bounds;
             self.pageControl.pageCount = allPageCount;
             _pageControl.currentPage = 0;
             
@@ -143,7 +144,42 @@
         }
         case VDEmojiViewStyleFullScreen:
         {
-           // self.transform = CGAffineTransformRotate(NULL, M_PI_2);
+            //单页表情行数、列数
+            int row = 3, column = 8;
+            //总页数
+            NSInteger allPageCount = self.picViewsMArray.count / (row * column);
+            NSInteger residue = self.picViewsMArray.count % (row * column);
+            if (residue != 0) {
+                allPageCount += 1;
+            }
+            
+            NSLog(@"表情页数 : %d",allPageCount);
+            _baseScroll.contentSize = CGSizeMake(VDEmoji_ScreenSize.height*allPageCount, self.frame.size.height);
+            _baseScroll.frame = self.bounds;
+            self.pageControl.pageCount = allPageCount;
+            _pageControl.currentPage = 0;
+            
+            int page = 0;
+            while (allPageCount > 0)
+            {
+                
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        
+                        if (i*column+j + page*(row*column) >= self.picViewsMArray.count) {
+                            break;
+                        }
+                        
+                        UIImageView *icon = [self.picViewsMArray objectAtIndex:i*column + j + page * (row *column)];
+                        
+                        icon.frame = CGRectMake(20 + j*(30 + 20) + page * 320, 15+i*(30+15), 30, 30);
+                        
+                    }
+                }
+                page ++ ;
+                allPageCount --;
+            }
+
             break;
         }
             

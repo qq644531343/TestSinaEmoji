@@ -14,4 +14,7 @@
 #import "VDEmojiView.h"
 #import "VDEmojiToolLabel.h"
 
+//屏幕大小
+#define VDEmoji_ScreenSize [UIScreen mainScreen].bounds.size
+
 #endif
