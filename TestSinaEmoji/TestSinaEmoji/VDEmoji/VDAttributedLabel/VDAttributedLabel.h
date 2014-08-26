@@ -10,7 +10,7 @@
 
 @class VDAttributedLabelURL;
 
-@interface VDAttributedLabel : UIView
+@interface VDAttributedLabel : UIView<NSCoding>
 @property (nonatomic,weak)    id<VDAttributedLabelDelegate> delegate;
 @property (nonatomic,strong)    UIFont *font;                   //字体
 @property (nonatomic,strong)    UIColor *textColor;             //文字颜色

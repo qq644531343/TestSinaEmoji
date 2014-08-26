@@ -26,6 +26,7 @@
 		09053AE0198F8FD6002E15AE /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 09053ADF198F8FD6002E15AE /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		09053AE2198F901C002E15AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09053AE1198F901C002E15AE /* CoreText.framework */; };
 		092B71F319909594003088C9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B71F219909594003088C9 /* ImageIO.framework */; };
+		0988A93419AB2ECC0037D5C5 /* VDEmojiToolLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988A93319AB2ECC0037D5C5 /* VDEmojiToolLabel.m */; };
 		099C68BA1991D8470021DDF4 /* VDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C68B91991D8470021DDF4 /* VDTableViewCell.m */; };
 		099C693819920EB10021DDF4 /* emojicustom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099C68BD19920EB10021DDF4 /* emojicustom.plist */; };
 		099C693919920EB10021DDF4 /* 88_thumb.gif in Resources */ = {isa = PBXBuildFile; fileRef = 099C68BF19920EB10021DDF4 /* 88_thumb.gif */; };
@@ -136,7 +137,6 @@
 		099C69A219920EB10021DDF4 /* VDEmojiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693319920EB10021DDF4 /* VDEmojiManger.m */; };
 		099C69A319920EB10021DDF4 /* VDEmojiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693519920EB10021DDF4 /* VDEmojiModel.m */; };
 		099C69A419920EB10021DDF4 /* VDEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693719920EB10021DDF4 /* VDEmojiView.m */; };
-		099C69A719922D990021DDF4 /* UITextField+ExtentRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C69A619922D990021DDF4 /* UITextField+ExtentRange.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +175,8 @@
 		09053ADF198F8FD6002E15AE /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		09053AE1198F901C002E15AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		092B71F219909594003088C9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0988A93219AB2ECC0037D5C5 /* VDEmojiToolLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDEmojiToolLabel.h; sourceTree = "<group>"; };
+		0988A93319AB2ECC0037D5C5 /* VDEmojiToolLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiToolLabel.m; sourceTree = "<group>"; };
 		099C68B81991D8470021DDF4 /* VDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDTableViewCell.h; sourceTree = "<group>"; };
 		099C68B91991D8470021DDF4 /* VDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDTableViewCell.m; sourceTree = "<group>"; };
 		099C68BD19920EB10021DDF4 /* emojicustom.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojicustom.plist; sourceTree = "<group>"; };
@@ -296,8 +298,6 @@
 		099C693519920EB10021DDF4 /* VDEmojiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiModel.m; sourceTree = "<group>"; };
 		099C693619920EB10021DDF4 /* VDEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDEmojiView.h; sourceTree = "<group>"; };
 		099C693719920EB10021DDF4 /* VDEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiView.m; sourceTree = "<group>"; };
-		099C69A519922D990021DDF4 /* UITextField+ExtentRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ExtentRange.h"; sourceTree = "<group>"; };
-		099C69A619922D990021DDF4 /* UITextField+ExtentRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ExtentRange.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,8 +430,8 @@
 				099C693519920EB10021DDF4 /* VDEmojiModel.m */,
 				099C693619920EB10021DDF4 /* VDEmojiView.h */,
 				099C693719920EB10021DDF4 /* VDEmojiView.m */,
-				099C69A519922D990021DDF4 /* UITextField+ExtentRange.h */,
-				099C69A619922D990021DDF4 /* UITextField+ExtentRange.m */,
+				0988A93219AB2ECC0037D5C5 /* VDEmojiToolLabel.h */,
+				0988A93319AB2ECC0037D5C5 /* VDEmojiToolLabel.m */,
 			);
 			path = VDEmoji;
 			sourceTree = "<group>";
@@ -793,9 +793,9 @@
 				09053AB4198F8F2F002E15AE /* AppDelegate.m in Sources */,
 				09053AE0198F8FD6002E15AE /* RegexKitLite.m in Sources */,
 				099C68BA1991D8470021DDF4 /* VDTableViewCell.m in Sources */,
-				099C69A719922D990021DDF4 /* UITextField+ExtentRange.m in Sources */,
 				09053AB0198F8F2F002E15AE /* main.m in Sources */,
 				099C69A419920EB10021DDF4 /* VDEmojiView.m in Sources */,
+				0988A93419AB2ECC0037D5C5 /* VDEmojiToolLabel.m in Sources */,
 				099C69A119920EB10021DDF4 /* VDAttributedLabelURL.m in Sources */,
 				099C699E19920EB10021DDF4 /* NSMutableAttributedString+VD.m in Sources */,
 			);

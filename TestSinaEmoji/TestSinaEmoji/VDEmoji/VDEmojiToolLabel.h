@@ -10,4 +10,8 @@
 
 @interface VDEmojiToolLabel : UILabel
 
+-(id)initWithFrame:(CGRect)frame textField:(UITextField *)parentfield;
+
+@property (nonatomic,strong) UITextField *parentField;
+ 
 @end

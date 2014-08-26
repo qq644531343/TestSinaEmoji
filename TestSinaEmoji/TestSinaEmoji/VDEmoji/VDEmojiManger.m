@@ -97,6 +97,9 @@
 -(VDEmojiModel *)getEmojiByChs:(NSString *)chs
 {
     if (chs.length >0) {
+        if ([chs isEqualToString:@"呵"]) {
+            
+        }
         for (VDEmojiModel *model in self.emojiModel_MArray) {
             if ([chs isEqualToString:model.chs]) {
                 return model;

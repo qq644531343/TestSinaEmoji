@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "VDEmojiHeaders.h"
+#import "VDEmojiToolLabel.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,VDEmojiViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,VDEmojiViewDelegate>
 
-@end
+@end 
