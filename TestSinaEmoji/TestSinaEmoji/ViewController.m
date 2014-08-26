@@ -54,12 +54,6 @@
     [self.view addSubview:tableview];
     tableview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1.0];
     
-    label = [[VDEmojiToolLabel alloc] initWithFrame:CGRectMake(10, 0, 200, 20) textField:nil];
-    label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
-    label.textColor = [UIColor whiteColor];
-    [self.view addSubview:label];
-    label.parentField = field;
-    
     [self.view bringSubviewToFront:field];
     [self.view bringSubviewToFront:swichBtn];
 }
@@ -68,16 +62,6 @@
 {
     int keyboardHeight = 216;
     screenframe = [[UIScreen mainScreen] bounds];
-    
-//    NSString *text  = @"[geli][吃惊]say:[草泥马] [haha] Your magic is Mine.[haha] [haha][geli][擦擦]";
-//    VDAttributedLabel *label2 = [[VDAttributedLabel alloc] initWithFrame:CGRectZero];
-//    [[VDEmojiManger sharedVDEmojiManger] generateLabelByString:text imageSize:CGSizeMake(15, 15) enableGif:NO label:label2];
-//    label2.font = [UIFont systemFontOfSize:15];
-//    label2.textColor = [UIColor redColor];
-//    CGSize size2 = [label2 sizeThatFits:CGSizeMake(320, 1000)];
-//    label2.frame = CGRectMake(0, 100, 320, size2.height);
-//    label2.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
-//    [self.view addSubview:label2];
     
     field = [[UITextField alloc] initWithFrame:CGRectMake(0, screenframe.size.height - keyboardHeight - 35, 260, 35)];
     field.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
@@ -92,13 +76,6 @@
     [swichBtn setTitle:@"switch" forState:UIControlStateNormal];
     swichBtn.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.3];
     [self.view addSubview:swichBtn];
-
-//    UIButton *swichBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    swichBtn.frame = CGRectMake(260, field.frame.origin.y, 60, 35);
-//    [swichBtn setTitle:@"switch" forState:UIControlStateNormal];
-//    swichBtn.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.3];
-//    field.rightView = swichBtn;
-//    field.rightViewMode = UITextFieldViewModeAlways;
     
     
     emojiView = [[VDEmojiView alloc] initWithFrame:CGRectMake(0, screenframe.size.height - keyboardHeight, screenframe.size.width, keyboardHeight)];
@@ -108,11 +85,31 @@
     [self.view.window addSubview:emojiView];
     fixedEmojiFrame = emojiView.frame;
     
+    label = [[VDEmojiToolLabel alloc] initWithFrame:CGRectNull textField:nil];
+    label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+    [self.view addSubview:label];
+    label.parentField = field;
+
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenKeyboard:) name:UIKeyboardWillHideNotification object:nil];
     
     [swichBtn addTarget:self action:@selector(change) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+-(void)testVDAttributeLabel
+{
+    NSString *text  = @"[geli][吃惊]say:[草泥马] [haha] Your magic is Mine.[haha] [haha][geli][擦擦]";
+    VDAttributedLabel *label2 = [[VDAttributedLabel alloc] initWithFrame:CGRectZero];
+    [[VDEmojiManger sharedVDEmojiManger] generateLabelByString:text imageSize:CGSizeMake(15, 15) enableGif:NO label:label2];
+    label2.font = [UIFont systemFontOfSize:15];
+    label2.textColor = [UIColor redColor];
+    CGSize size2 = [label2 sizeThatFits:CGSizeMake(320, 1000)];
+    label2.frame = CGRectMake(0, 100, 320, size2.height);
+    label2.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
+    [self.view addSubview:label2];
 
 }
 
@@ -205,7 +202,7 @@
         [dataMArray addObject:text];
         [tableview beginUpdates];
         NSIndexPath *newHistoryMessageIndexPath = [NSIndexPath indexPathForRow:dataMArray.count-1 inSection:0];
-        // update history table-view
+      
         [tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:newHistoryMessageIndexPath]
                                      withRowAnimation:UITableViewRowAnimationFade];
         [tableview endUpdates];

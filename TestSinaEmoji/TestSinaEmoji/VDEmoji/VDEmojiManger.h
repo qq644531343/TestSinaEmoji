@@ -30,6 +30,7 @@
 -(VDEmojiModel *)getEmojiByChs:(NSString *)chs;
 
 
+
 #pragma mark - private 
 
 /////////////////////////////////////////////////////////////////

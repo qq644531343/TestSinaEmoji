@@ -12,5 +12,6 @@
 #import "VDEmojiManger.h"
 #import "VDEmojiModel.h"
 #import "VDEmojiView.h"
+#import "VDEmojiToolLabel.h"
 
 #endif

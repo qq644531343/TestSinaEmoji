@@ -10,20 +10,30 @@
 
 @implementation VDEmojiToolLabel
 
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        
+        [self addTapGes];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame textField:(UITextField *)parentfield
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        //self.textAlignment = NSTextAlignmentRight;
         
         self.parentField = parentfield;
+        [self addTapGes];
         
     }
     return self;
 }
 
 #pragma mark - 
+
 -(void)setParentField:(UITextField *)parentField
 {
     if (self.parentField) {
@@ -45,7 +55,6 @@
 -(void)setSelfContext
 {
     self.frame = self.parentField.frame;
-    //self.center = CGPointMake(self.center.x, 40);
     self.font = self.parentField.font;
     self.textColor = self.parentField.textColor;
 }
@@ -81,18 +90,21 @@
     self.parentField.hidden = ! hidenself;
 }
 
+-(void)addTapGes
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    self.userInteractionEnabled = YES;
+    [self addGestureRecognizer:tap];
+}
+
+-(void)tap:(UITapGestureRecognizer *)tap
+{
+    [self.parentField becomeFirstResponder];
+}
+
 -(void)dealloc
 {
     self.parentField = nil;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -6,6 +6,11 @@
 //  Copyright (c) 2014 sina. All rights reserved.
 //
 
+/**
+ *  表情主UI
+ *  可根据需要进行继承或重写
+ **/
+
 #import <UIKit/UIKit.h>
 #import "VDEmojiHeaders.h"
 
