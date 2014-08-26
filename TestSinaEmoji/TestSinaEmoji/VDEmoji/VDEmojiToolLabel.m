@@ -45,7 +45,7 @@
 -(void)setSelfContext
 {
     self.frame = self.parentField.frame;
-    self.center = CGPointMake(self.center.x, 40);
+    //self.center = CGPointMake(self.center.x, 40);
     self.font = self.parentField.font;
     self.textColor = self.parentField.textColor;
 }
@@ -59,7 +59,7 @@
     float allWidth = 0;
     int i = text.length -1;
     for (; i>=0; i--) {
-        if (allWidth >= width) {
+        if (allWidth >= width - 4) {
             break;
         }
         NSString *subStr = [text substringWithRange:NSMakeRange(i, 1)];
@@ -71,6 +71,14 @@
         return [text substringFromIndex:i+2];
     }
     return text; 
+}
+
+//切换textfield和label
+//传YES隐藏label  传NO隐藏field
+-(void)exchange:(BOOL)hidenself
+{
+    self.hidden = hidenself;
+    self.parentField.hidden = ! hidenself;
 }
 
 -(void)dealloc

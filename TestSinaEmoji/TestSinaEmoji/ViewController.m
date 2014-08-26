@@ -140,9 +140,9 @@
     CGRect oldFrame = CGRectMake(0, screenframe.size.height - keyboardSize.height - 35, 260, 35);
     field.frame = oldFrame;
     swichBtn.center = CGPointMake(swichBtn.center.x, field.center.y);
-    //field.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y + keyboardSize.height, oldFrame.size.width, oldFrame.size.height);
+    
     emojiView.center = CGPointMake(emojiView.center.x, screenframe.size.height + emojiView.frame.size.height/2.0f);
-
+    [label performSelector:@selector(exchange:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.27];
     [UIView commitAnimations];
 
 }
@@ -158,6 +158,7 @@
     [UIView setAnimationCurve: [[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     
     emojiView.frame = fixedEmojiFrame;
+    [label exchange:NO];
     
     [UIView commitAnimations];
 

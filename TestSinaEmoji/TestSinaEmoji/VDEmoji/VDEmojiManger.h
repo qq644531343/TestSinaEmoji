@@ -10,7 +10,7 @@
 #import "VDEmojiModel.h"
 #import "VDAttributedLabel/VDAttributedLabel.h"
 
-#define  _regex_emoji  @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]{1,5}+\\]"
+#define  _regex_emoji  @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]{1,7}+\\]"
 
 @interface VDEmojiManger : NSObject
 
