@@ -219,18 +219,33 @@
 
 #pragma mark -
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+    UIInterfaceOrientation toInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
     {
-        emojiView.style = VDEmojiViewStyleNormal;
         emojiView.frame = fixedEmojiFrame;
+        emojiView.style = VDEmojiViewStyleNormal;
     }else {
+        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
         emojiView.style = VDEmojiViewStyleFullScreen;
         tableview.frame = CGRectZero;
-        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
+        
     }
+
 }
+//-(void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
+//    {
+//        emojiView.style = VDEmojiViewStyleNormal;
+//        emojiView.frame = fixedEmojiFrame;
+//    }else {
+//        emojiView.style = VDEmojiViewStyleFullScreen;
+//        tableview.frame = CGRectZero;
+//        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {

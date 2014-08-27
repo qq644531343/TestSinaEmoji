@@ -100,92 +100,64 @@
 -(void)setStyle:(VDEmojiViewStyle)style
 {
     _style = style;
+    _baseScroll.contentOffset = CGPointZero;
     
     switch (style) {
         case VDEmojiViewStyleNormal:
         {
-            //单页表情行数、列数
-            int row = 4, column = 6;
-            //总页数
-            NSInteger allPageCount = self.picViewsMArray.count / (row * column);
-            NSInteger residue = self.picViewsMArray.count % (row * column);
-            if (residue != 0) {
-                allPageCount += 1;
-            }
-            
-            NSLog(@"表情页数 : %d",allPageCount);
-            _baseScroll.contentSize = CGSizeMake(320*allPageCount, self.frame.size.height);
-            _baseScroll.frame = self.bounds;
-            self.pageControl.pageCount = allPageCount;
-            _pageControl.currentPage = 0;
-            
-            int page = 0;
-            while (allPageCount > 0)
-            {
-                
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                        
-                        if (i*column+j + page*(row*column) >= self.picViewsMArray.count) {
-                            break;
-                        }
-                        
-                        UIImageView *icon = [self.picViewsMArray objectAtIndex:i*column + j + page * (row *column)];
-                        
-                        icon.frame = CGRectMake(20 + j*(30 + 20) + page * 320, 15+i*(30+15), 30, 30);
-                        
-                    }
-                }
-                page ++ ;
-                allPageCount --;
-            }
-        
+            [self refreshFrameWithRow:4 column:6];
             break;
         }
         case VDEmojiViewStyleFullScreen:
         {
-            //单页表情行数、列数
-            int row = 3, column = 8;
-            //总页数
-            NSInteger allPageCount = self.picViewsMArray.count / (row * column);
-            NSInteger residue = self.picViewsMArray.count % (row * column);
-            if (residue != 0) {
-                allPageCount += 1;
-            }
-            
-            NSLog(@"表情页数 : %d",allPageCount);
-            _baseScroll.contentSize = CGSizeMake(VDEmoji_ScreenSize.height*allPageCount, self.frame.size.height);
-            _baseScroll.frame = self.bounds;
-            self.pageControl.pageCount = allPageCount;
-            _pageControl.currentPage = 0;
-            
-            int page = 0;
-            while (allPageCount > 0)
-            {
-                
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                        
-                        if (i*column+j + page*(row*column) >= self.picViewsMArray.count) {
-                            break;
-                        }
-                        
-                        UIImageView *icon = [self.picViewsMArray objectAtIndex:i*column + j + page * (row *column)];
-                        
-                        icon.frame = CGRectMake(20 + j*(30 + 20) + page * 320, 15+i*(30+15), 30, 30);
-                        
-                    }
-                }
-                page ++ ;
-                allPageCount --;
-            }
-
+            [self refreshFrameWithRow:3 column:11];
             break;
         }
             
         default:
             break;
     }
+}
+
+-(void)refreshFrameWithRow:(int)row column:(int)column
+{
+
+    //总页数
+    NSInteger allPageCount = self.picViewsMArray.count / (row * column);
+    NSInteger residue = self.picViewsMArray.count % (row * column);
+    if (residue != 0) {
+        allPageCount += 1;
+    }
+    
+    NSLog(@"表情页数 : %d",allPageCount);
+    _baseScroll.contentSize = CGSizeMake(VDEmoji_ScreenSize.height*allPageCount, self.frame.size.height);
+    _baseScroll.frame = self.bounds;
+    _baseScroll.backgroundColor = [UIColor greenColor];
+    _pageControl.frame = CGRectMake(0, _baseScroll.frame.size.height - 20, 568, 5);
+    self.pageControl.pageCount = allPageCount;
+    _pageControl.currentPage = 0;
+    
+    int page = 0;
+    while (allPageCount > 0)
+    {
+        
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                
+                if (i*column+j + page*(row*column) >= self.picViewsMArray.count) {
+                    break;
+                }
+                
+                UIImageView *icon = [self.picViewsMArray objectAtIndex:i*column + j + page * (row *column)];
+                
+                icon.frame = CGRectMake(20 + j*(30 + 20) + page * _baseScroll.frame.size.width, 15+i*(30+15), 30, 30);
+                
+            }
+        }
+        page ++ ;
+        allPageCount --;
+    }
+
 }
 
 #pragma mark - UIScrollViewDelegate
