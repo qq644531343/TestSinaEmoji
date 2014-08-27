@@ -133,10 +133,10 @@
     _baseScroll.contentSize = CGSizeMake(VDEmoji_ScreenSize.height*allPageCount, self.frame.size.height);
     _baseScroll.frame = self.bounds;
     _baseScroll.backgroundColor = [UIColor greenColor];
-    _pageControl.frame = CGRectMake(0, _baseScroll.frame.size.height - 20, 568, 5);
+    _pageControl.frame = CGRectMake(0, _baseScroll.frame.size.height - 20, _baseScroll.frame.size.width, 5);
     self.pageControl.pageCount = allPageCount;
     _pageControl.currentPage = 0;
-    
+
     int page = 0;
     while (allPageCount > 0)
     {
@@ -157,7 +157,7 @@
         page ++ ;
         allPageCount --;
     }
-
+    
 }
 
 #pragma mark - UIScrollViewDelegate

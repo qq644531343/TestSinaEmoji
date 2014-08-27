@@ -33,6 +33,7 @@
         [pointViewArray removeAllObjects];
         
         int x = BANNER_PAGE_CONTROL_W - POINT_W;
+        x = self.frame.size.width/2.0f + 23 - POINT_W;
         for (int i = 0; i < _pageCount; i++)
         {
             UIImageView *point = [[UIImageView alloc] initWithFrame:
