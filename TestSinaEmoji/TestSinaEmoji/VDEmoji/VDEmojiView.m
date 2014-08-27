@@ -61,6 +61,7 @@
     _baseScroll.pagingEnabled = YES;
     _baseScroll.delegate = self;
     _baseScroll.showsVerticalScrollIndicator = NO;
+    _baseScroll.showsHorizontalScrollIndicator = NO;
     [self addSubview:_baseScroll];
     
     
@@ -108,10 +109,10 @@
     //[self scrollViewDidScroll:_baseScroll];
 }
 
--(void)showEmojiView:(BOOL)show
+-(void)setShowEmojiView:(BOOL)showEmojiView
 {
-    if (show) {
-        showing = YES;
+    if (showEmojiView) {
+        _showEmojiView = YES;
         if (self.style == VDEmojiViewStyleNormal) {
             self.frame = VDEmojiSelfPortraitFrame;
         }else
@@ -119,10 +120,12 @@
             self.frame = VDEmojiSelfLandscapeFrame;
         }
     }else {
-        showing = NO;
+        _showEmojiView = NO;
         self.center = CGPointMake(self.center.x, VDEmoji_ScreenSize.height + self.frame.size.height/2.0f);
     }
+
 }
+
 
 /////////////////////////////////////////////////////////////
 
