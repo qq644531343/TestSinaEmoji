@@ -14,6 +14,9 @@
 #import <UIKit/UIKit.h>
 #import "VDEmojiHeaders.h"
 
+#define VDEmojiKeyboardPortraitHeight 216
+#define VDEmojiKeyboardLandscapeHeight 162
+
 typedef enum VDEmojiViewStyle{
     VDEmojiViewStyleNormal,
     VDEmojiViewStyleFullScreen

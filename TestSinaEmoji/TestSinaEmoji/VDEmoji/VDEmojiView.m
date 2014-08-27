@@ -129,10 +129,9 @@
         allPageCount += 1;
     }
     
-    NSLog(@"表情页数 : %d",allPageCount);
+    //NSLog(@"表情页数 : %d",allPageCount);
     _baseScroll.contentSize = CGSizeMake(VDEmoji_ScreenSize.height*allPageCount, self.frame.size.height);
     _baseScroll.frame = self.bounds;
-    _baseScroll.backgroundColor = [UIColor greenColor];
     _pageControl.frame = CGRectMake(0, _baseScroll.frame.size.height - 20, _baseScroll.frame.size.width, 5);
     self.pageControl.pageCount = allPageCount;
     _pageControl.currentPage = 0;
