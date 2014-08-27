@@ -104,7 +104,7 @@
     }
     
     [self setStyle:VDEmojiViewStyleNormal];
-    [self scrollViewDidScroll:_baseScroll];
+    //[self scrollViewDidScroll:_baseScroll];
 }
 
 /////////////////////////////////////////////////////////////
@@ -177,6 +177,7 @@
     self.pageControl.pageCount = allPageCount;
     _pageControl.currentPage = 0;
     rows = row; columns = column;
+    [self scrollViewDidScroll:_baseScroll];
 
     int page = 0;
     while (allPageCount > 0)
