@@ -20,9 +20,17 @@
 
 #define VDEmojiSelfLandscapeFrame (CGRectMake(0, VDEmoji_ScreenSize.width - VDEmojiKeyboardLandscapeHeight, VDEmoji_ScreenSize.height, VDEmojiKeyboardLandscapeHeight))
 
+//rows and column
+
+
 @interface VDEmojiView ()
+{
+    int rows, columns;
+}
 
 @property (nonatomic,strong) NSMutableArray *picViewsMArray;
+
+@property (nonatomic,strong) NSMutableArray *deleteBtnMArray;
 
 @property (nonatomic,strong) UIScrollView *baseScroll;
 
@@ -38,10 +46,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-       
-        //self.windowLevel = UIWindowLevelAlert;
-        self.backgroundColor = [UIColor redColor];
+        
         [self addView];
+        
     }
     return self;
 }
@@ -55,6 +62,7 @@
     _baseScroll.showsVerticalScrollIndicator = NO;
     [self addSubview:_baseScroll];
     
+    
     _pageControl = [[VDEmojiPageControl alloc] initWithFrame:CGRectMake(0, _baseScroll.frame.size.height - 20, 320, 5)];
     _pageControl.backgroundColor = [UIColor clearColor];
     _pageControl.currentPage = 0;
@@ -62,6 +70,7 @@
     
     
     _picViewsMArray = [[NSMutableArray alloc] init];
+    _deleteBtnMArray = [[NSMutableArray alloc] init];
     
     NSArray *emojies = [[VDEmojiManger sharedVDEmojiManger] getAllEmojies];
     
@@ -81,7 +90,21 @@
         [self.picViewsMArray addObject:icon];
     }
     
+    for (int i = 0; i<3; i++) {
+        
+        UIImageView *delBtn = [[UIImageView alloc] initWithFrame:CGRectZero];
+        delBtn.image = [UIImage imageNamed:@"emojiCancel.png"];
+        [_baseScroll addSubview:delBtn];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteEmoji:)];
+        delBtn.userInteractionEnabled = YES;
+        [delBtn addGestureRecognizer:tap];
+        
+        [self.deleteBtnMArray addObject:delBtn];
+    }
+    
     [self setStyle:VDEmojiViewStyleNormal];
+    [self scrollViewDidScroll:_baseScroll];
 }
 
 /////////////////////////////////////////////////////////////
@@ -96,12 +119,21 @@
     if (icon.tag > emojies.count) {
         return;
     }
-    
+
     VDEmojiModel *model = [emojies objectAtIndex:icon.tag];
     
-    if (self.delegateEmoji && [self.delegateEmoji respondsToSelector:@selector(vdEmojiView:clickedAtEmoji:)])
+    if (self.delegateEmoji && [self.delegateEmoji respondsToSelector:@selector(vdEmojiView:clickedAtEmoji:isDeleteButton:)])
     {
-        [self.delegateEmoji vdEmojiView:self clickedAtEmoji:model];
+        [self.delegateEmoji vdEmojiView:self clickedAtEmoji:model isDeleteButton:NO];
+    }
+}
+
+-(void)deleteEmoji:(UITapGestureRecognizer *)tap
+{
+    if (self.delegateEmoji && [self.delegateEmoji respondsToSelector:@selector(vdEmojiView:clickedAtEmoji:isDeleteButton:)])
+    {
+        NSLog(@"delete emoji");
+        [self.delegateEmoji vdEmojiView:self clickedAtEmoji:nil isDeleteButton:YES];
     }
 }
 
@@ -114,13 +146,13 @@
         case VDEmojiViewStyleNormal:
         {
             self.frame = VDEmojiSelfPortraitFrame;
-            [self refreshFrameWithRow:4 column:6];
+            [self refreshFrameWithRows:4 columns:6];
             break;
         }
         case VDEmojiViewStyleFullScreen:
         {
             self.frame = VDEmojiSelfLandscapeFrame;
-            [self refreshFrameWithRow:3 column:11];
+            [self refreshFrameWithRows:3 columns:11];
             break;
         }
             
@@ -129,12 +161,11 @@
     }
 }
 
--(void)refreshFrameWithRow:(int)row column:(int)column
+-(void)refreshFrameWithRows:(int)row columns:(int)column
 {
-
     //总页数
-    NSInteger allPageCount = self.picViewsMArray.count / (row * column);
-    NSInteger residue = self.picViewsMArray.count % (row * column);
+    NSInteger allPageCount = self.picViewsMArray.count / (row * column-1);
+    NSInteger residue = self.picViewsMArray.count % (row * column-1);
     if (residue != 0) {
         allPageCount += 1;
     }
@@ -145,6 +176,7 @@
     _pageControl.frame = CGRectMake(0, _baseScroll.frame.size.height - 20, _baseScroll.frame.size.width, 5);
     self.pageControl.pageCount = allPageCount;
     _pageControl.currentPage = 0;
+    rows = row; columns = column;
 
     int page = 0;
     while (allPageCount > 0)
@@ -153,11 +185,18 @@
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 
-                if (i*column+j + page*(row*column) >= self.picViewsMArray.count) {
+                NSInteger index = i*column + j + page*(row*column-1);
+                if (index >= self.picViewsMArray.count) {
                     break;
                 }
                 
-                UIImageView *icon = [self.picViewsMArray objectAtIndex:i*column + j + page * (row *column)];
+                if (i*j == (row-1)*(column-1)) {
+                    
+                    //删除按钮
+                    break;
+                }
+                
+                UIImageView *icon = [self.picViewsMArray objectAtIndex:index];
                 
                 icon.frame = CGRectMake(20 + j*(30 + 20) + page * _baseScroll.frame.size.width, 15+i*(30+15), 30, 30);
                 
@@ -174,6 +213,25 @@
 {
     int index = scrollView.contentOffset.x / scrollView.frame.size.width;
     _pageControl.currentPage = index;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int index = scrollView.contentOffset.x / scrollView.frame.size.width;
+    int maxIndx = scrollView.contentSize.width /scrollView.frame.size.width;
+    
+    UIImageView *icon = [self.deleteBtnMArray objectAtIndex:1];
+    icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + index * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+    
+    if (index - 1 >= 0) {
+        UIImageView *icon = [self.deleteBtnMArray objectAtIndex:0];
+        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index-1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+    }
+    if (index + 1 <= maxIndx) {
+        UIImageView *icon = [self.deleteBtnMArray objectAtIndex:2];
+        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index+1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+    }
+    
 }
 
 #pragma mark - other

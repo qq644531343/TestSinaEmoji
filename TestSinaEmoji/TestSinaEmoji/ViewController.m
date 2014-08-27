@@ -212,9 +212,13 @@
 
 #pragma mark - VDEmojiViewDelegate
 
--(void)vdEmojiView:(VDEmojiView *)view clickedAtEmoji:(VDEmojiModel *)emodel
+-(void)vdEmojiView:(VDEmojiView *)view clickedAtEmoji:(VDEmojiModel *)emodel isDeleteButton:(BOOL)delBtn
 {
-    field.text = [NSString stringWithFormat:@"%@%@",field.text,emodel.chs];
+    if (!delBtn) {
+        field.text = [NSString stringWithFormat:@"%@%@",field.text,emodel.chs];
+    }else {
+    
+    }
 }
 
 #pragma mark -

@@ -37,6 +37,6 @@ typedef enum VDEmojiViewStyle{
 
 @required
 
--(void)vdEmojiView:(VDEmojiView *)view clickedAtEmoji:(VDEmojiModel *)emodel;
+-(void)vdEmojiView:(VDEmojiView *)view clickedAtEmoji:(VDEmojiModel *)emodel isDeleteButton:(BOOL)delBtn;
 
 @end
