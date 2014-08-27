@@ -138,6 +138,7 @@
 		099C69A219920EB10021DDF4 /* VDEmojiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693319920EB10021DDF4 /* VDEmojiManger.m */; };
 		099C69A319920EB10021DDF4 /* VDEmojiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693519920EB10021DDF4 /* VDEmojiModel.m */; };
 		099C69A419920EB10021DDF4 /* VDEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C693719920EB10021DDF4 /* VDEmojiView.m */; };
+		09F0571619AD8E5600894B82 /* emojiCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F0571519AD8E5600894B82 /* emojiCancel@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +302,7 @@
 		099C693519920EB10021DDF4 /* VDEmojiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiModel.m; sourceTree = "<group>"; };
 		099C693619920EB10021DDF4 /* VDEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDEmojiView.h; sourceTree = "<group>"; };
 		099C693719920EB10021DDF4 /* VDEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiView.m; sourceTree = "<group>"; };
+		09F0571519AD8E5600894B82 /* emojiCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emojiCancel@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +464,7 @@
 		099C68C019920EB10021DDF4 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				09F0571519AD8E5600894B82 /* emojiCancel@2x.png */,
 				099C68C119920EB10021DDF4 /* d_aini@2x.png */,
 				099C68C219920EB10021DDF4 /* d_aoteman@2x.png */,
 				099C68C319920EB10021DDF4 /* d_baibai@2x.png */,
@@ -677,6 +680,7 @@
 				099C695919920EB10021DDF4 /* d_nu@2x.png in Resources */,
 				099C699B19920EB10021DDF4 /* w_xiayu@2x.png in Resources */,
 				099C693819920EB10021DDF4 /* emojicustom.plist in Resources */,
+				09F0571619AD8E5600894B82 /* emojiCancel@2x.png in Resources */,
 				099C696719920EB10021DDF4 /* d_tu@2x.png in Resources */,
 				099C695A19920EB10021DDF4 /* d_numa@2x.png in Resources */,
 				099C693E19920EB10021DDF4 /* d_bishi@2x.png in Resources */,
