@@ -78,7 +78,7 @@
     [self.view addSubview:swichBtn];
     
     
-    emojiView = [[VDEmojiView alloc] initWithFrame:CGRectMake(0, screenframe.size.height - keyboardHeight, screenframe.size.width, keyboardHeight)];
+    emojiView = [[VDEmojiView alloc] initWithFrame:CGRectZero];
     emojiView.hidden = YES;
     emojiView.delegateEmoji = self;
     [self.view addSubview:emojiView];
@@ -224,33 +224,13 @@
     UIInterfaceOrientation toInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
     {
-        emojiView.frame = fixedEmojiFrame;
         emojiView.style = VDEmojiViewStyleNormal;
     }else {
-        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
         emojiView.style = VDEmojiViewStyleFullScreen;
         tableview.frame = CGRectZero;
         
     }
 
-}
-//-(void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-//{
-//    if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
-//    {
-//        emojiView.style = VDEmojiViewStyleNormal;
-//        emojiView.frame = fixedEmojiFrame;
-//    }else {
-//        emojiView.style = VDEmojiViewStyleFullScreen;
-//        tableview.frame = CGRectZero;
-//        emojiView.frame = CGRectMake(0, screenframe.size.width - 162, 568, 162);
-//    }
-//}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

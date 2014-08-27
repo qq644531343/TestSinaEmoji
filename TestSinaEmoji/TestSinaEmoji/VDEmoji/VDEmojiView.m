@@ -11,6 +11,15 @@
 
 #define __RGBA(r,g,b,a)           [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
+//keyboard height
+#define VDEmojiKeyboardPortraitHeight 216
+#define VDEmojiKeyboardLandscapeHeight 162
+
+//self frame
+#define VDEmojiSelfPortraitFrame (CGRectMake(0, VDEmoji_ScreenSize.height - VDEmojiKeyboardPortraitHeight, VDEmoji_ScreenSize.width, VDEmojiKeyboardPortraitHeight))
+
+#define VDEmojiSelfLandscapeFrame (CGRectMake(0, VDEmoji_ScreenSize.width - VDEmojiKeyboardLandscapeHeight, VDEmoji_ScreenSize.height, VDEmojiKeyboardLandscapeHeight))
+
 @interface VDEmojiView ()
 
 @property (nonatomic,strong) NSMutableArray *picViewsMArray;
@@ -33,7 +42,6 @@
         //self.windowLevel = UIWindowLevelAlert;
         self.backgroundColor = [UIColor redColor];
         [self addView];
-        
     }
     return self;
 }
@@ -105,11 +113,13 @@
     switch (style) {
         case VDEmojiViewStyleNormal:
         {
+            self.frame = VDEmojiSelfPortraitFrame;
             [self refreshFrameWithRow:4 column:6];
             break;
         }
         case VDEmojiViewStyleFullScreen:
         {
+            self.frame = VDEmojiSelfLandscapeFrame;
             [self refreshFrameWithRow:3 column:11];
             break;
         }
