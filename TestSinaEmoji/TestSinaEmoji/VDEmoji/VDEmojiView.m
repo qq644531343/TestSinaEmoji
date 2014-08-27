@@ -132,7 +132,7 @@
 {
     if (self.delegateEmoji && [self.delegateEmoji respondsToSelector:@selector(vdEmojiView:clickedAtEmoji:isDeleteButton:)])
     {
-        NSLog(@"delete emoji");
+        
         [self.delegateEmoji vdEmojiView:self clickedAtEmoji:nil isDeleteButton:YES];
     }
 }

@@ -80,6 +80,30 @@
     return NO;
 }
 
+//删除
+-(NSString *)deleteEmojiFromString:(NSString *)text
+{
+    if (text.length > 0) {
+        if (text.length >= 3 && [[text substringFromIndex:text.length-1] isEqualToString:@"]"]) {
+             NSArray *array_emoji = [self getEmojiChsFromString:text];
+            if ([array_emoji count] > 0) {
+                NSString *endString = [array_emoji objectAtIndex:[array_emoji count] - 1];
+                NSString *dstString = [text substringFromIndex:text.length - endString.length];
+                if ([endString isEqualToString:dstString] && [self getEmojiByChs:endString]) {
+                    return [text substringToIndex:text.length - endString.length];
+                }else {
+                    return [text substringToIndex:text.length-1];
+                }
+            }else {
+                return [text substringToIndex:text.length-1];
+            }
+        }else {
+            return [text substringToIndex:text.length-1];
+        }
+    }
+    return text;
+}
+
 -(NSArray *)getAllEmojies
 {
     return self.emojiModel_MArray;
@@ -97,9 +121,7 @@
 -(VDEmojiModel *)getEmojiByChs:(NSString *)chs
 {
     if (chs.length >0) {
-        if ([chs isEqualToString:@"呵"]) {
-            
-        }
+        
         for (VDEmojiModel *model in self.emojiModel_MArray) {
             if ([chs isEqualToString:model.chs]) {
                 return model;

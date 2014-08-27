@@ -217,7 +217,7 @@
     if (!delBtn) {
         field.text = [NSString stringWithFormat:@"%@%@",field.text,emodel.chs];
     }else {
-    
+        field.text = [[VDEmojiManger sharedVDEmojiManger] deleteEmojiFromString:field.text];
     }
 }
 
