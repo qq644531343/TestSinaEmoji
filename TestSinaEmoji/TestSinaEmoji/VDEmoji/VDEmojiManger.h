@@ -23,7 +23,7 @@
 //如果要支持gif，请按命名规范添加相应gif图片
 -(BOOL)generateLabelByString:(NSString *)text imageSize:(CGSize)imgsize enableGif:(BOOL)gif label:(VDAttributedLabel *)label;
 
-//删除
+//删除最后一个表情
 -(NSString *)deleteEmojiFromString:(NSString *)text;
 
 -(NSArray *)getAllEmojies;

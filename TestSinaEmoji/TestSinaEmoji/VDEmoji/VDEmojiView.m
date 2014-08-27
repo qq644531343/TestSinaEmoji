@@ -26,6 +26,7 @@
 @interface VDEmojiView ()
 {
     int rows, columns;
+    BOOL      showing;
 }
 
 @property (nonatomic,strong) NSMutableArray *picViewsMArray;
@@ -105,6 +106,22 @@
     
     [self setStyle:VDEmojiViewStyleNormal];
     //[self scrollViewDidScroll:_baseScroll];
+}
+
+-(void)showEmojiView:(BOOL)show
+{
+    if (show) {
+        showing = YES;
+        if (self.style == VDEmojiViewStyleNormal) {
+            self.frame = VDEmojiSelfPortraitFrame;
+        }else
+        {
+            self.frame = VDEmojiSelfLandscapeFrame;
+        }
+    }else {
+        showing = NO;
+        self.center = CGPointMake(self.center.x, VDEmoji_ScreenSize.height + self.frame.size.height/2.0f);
+    }
 }
 
 /////////////////////////////////////////////////////////////

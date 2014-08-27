@@ -134,9 +134,9 @@
     
     CGRect oldFrame = CGRectMake(0, screenframe.size.height - keyboardSize.height - 35, 260, 35);
     field.frame = oldFrame;
-    swichBtn.center = CGPointMake(swichBtn.center.x, field.center.y);
+    //swichBtn.center = CGPointMake(swichBtn.center.x, field.center.y);
     
-    emojiView.center = CGPointMake(emojiView.center.x, screenframe.size.height + emojiView.frame.size.height/2.0f);
+    [emojiView showEmojiView:NO];
     [label performSelector:@selector(exchange:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.27];
     [UIView commitAnimations];
 
@@ -152,7 +152,7 @@
     [UIView setAnimationDuration:duration];
     [UIView setAnimationCurve: [[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     
-    emojiView.frame = fixedEmojiFrame;
+    [emojiView showEmojiView:YES];
     [label exchange:NO];
     
     [UIView commitAnimations];
@@ -229,9 +229,14 @@
     if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
     {
         emojiView.style = VDEmojiViewStyleNormal;
+        field.frame = CGRectMake(0, 20, 200, 300);
+        swichBtn.frame = CGRectMake(260, field.frame.origin.y, 60, 35);
     }else {
         emojiView.style = VDEmojiViewStyleFullScreen;
+        
         tableview.frame = CGRectZero;
+        field.frame = CGRectMake(0, 20, 200, 30);
+        swichBtn.frame = CGRectMake(260, 30, 60, 35);
         
     }
 
