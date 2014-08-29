@@ -161,6 +161,7 @@
 {
     _style = style;
     _baseScroll.contentOffset = CGPointZero;
+    [self.deleteBtnMArray makeObjectsPerformSelector:@selector(setFrame:) withObject:[NSValue valueWithCGRect:CGRectZero]];
     
     switch (style) {
         case VDEmojiViewStyleNormal:
