@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        
+        self.rightMargin = 4.0f;
         [self addTapGes];
     }
     return self;
@@ -68,7 +68,7 @@
     float allWidth = 0;
     int i = text.length -1;
     for (; i>=0; i--) {
-        if (allWidth >= width - 4) {
+        if (allWidth >= width - self.rightMargin) {
             break;
         }
         NSString *subStr = [text substringWithRange:NSMakeRange(i, 1)];

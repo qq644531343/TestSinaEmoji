@@ -17,5 +17,11 @@
 //切换textfield和label
 //传YES隐藏label  传NO隐藏field
 -(void)exchange:(BOOL)hidenself;
+
+
+//可选属性
+
+//右边距 default is 4.0f
+@property (nonatomic,readwrite) float rightMargin;
  
 @end
