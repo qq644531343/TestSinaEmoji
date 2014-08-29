@@ -28,7 +28,7 @@
 
 -(void)setText:(NSString *)text
 {
-    [[VDEmojiManger sharedVDEmojiManger] generateLabelByString:text imageSize:CGSizeMake(15, 15) enableGif:NO label:_label];
+    [[VDEmojiManger sharedVDEmojiManger] generateLabelByString:text imageSize:CGSizeMake(15, 15) enableGif:YES label:_label];
     CGSize size2 = [_label sizeThatFits:CGSizeMake(320, 1000)];
     _label.frame = CGRectMake(0, 0, 320, size2.height);
 

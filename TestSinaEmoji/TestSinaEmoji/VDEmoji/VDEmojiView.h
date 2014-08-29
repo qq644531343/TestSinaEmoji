@@ -29,8 +29,6 @@ typedef enum VDEmojiViewStyle{
 
 @property (nonatomic,readwrite) BOOL showEmojiView;
 
-//-(void)showEmojiView:(BOOL)show;
-
 @end
 
 /////////////////////////////////////////////////////////////

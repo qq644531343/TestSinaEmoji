@@ -35,9 +35,8 @@
 
     dataMArray = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i<0; i++) {
+    for (int i = 0; i<100; i++) {
         NSString *text  = @"[geli][吃惊]say:[草泥马] [haha] Your magic is Mine.[haha] [haha][geli][擦擦]";
-        text = @"[呵]";
         [dataMArray addObject:text];
     }
     
@@ -136,7 +135,7 @@
     field.frame = oldFrame;
     //swichBtn.center = CGPointMake(swichBtn.center.x, field.center.y);
     
-    [emojiView showEmojiView:NO];
+    emojiView.showEmojiView = NO;
     [label performSelector:@selector(exchange:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.27];
     [UIView commitAnimations];
 
@@ -152,7 +151,7 @@
     [UIView setAnimationDuration:duration];
     [UIView setAnimationCurve: [[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     
-    [emojiView showEmojiView:YES];
+    emojiView.showEmojiView = YES;
     [label exchange:NO];
     
     [UIView commitAnimations];
