@@ -58,6 +58,15 @@
     self.font = self.parentField.font;
     self.textColor = self.parentField.textColor;
     self.layer.cornerRadius = self.parentField.layer.cornerRadius;
+    
+//    {
+//        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+//                                                         byRoundingCorners:UIRectCornerAllCorners                                                            cornerRadii:CGSizeMake(self.layer.cornerRadius, self.layer.cornerRadius)];
+//        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//        maskLayer.frame = self.bounds;
+//        maskLayer.path = bezierPath.CGPath;
+//        self.layer.mask = maskLayer;
+//    }
 }
 
 
