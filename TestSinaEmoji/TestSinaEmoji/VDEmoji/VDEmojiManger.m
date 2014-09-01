@@ -158,7 +158,7 @@
 -(BOOL)loadAndParseEmojiPlist
 {
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"emojicustom" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"emoji_video" ofType:@"plist"];
     if (!path)
     {
         NSLog(@"Emoji Error: can't find plist");

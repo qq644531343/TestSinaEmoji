@@ -26,6 +26,7 @@
 		09053AE0198F8FD6002E15AE /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 09053ADF198F8FD6002E15AE /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		09053AE2198F901C002E15AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09053AE1198F901C002E15AE /* CoreText.framework */; };
 		092B71F319909594003088C9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B71F219909594003088C9 /* ImageIO.framework */; };
+		0946FCD419B4419300D0DA56 /* emoji_video.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0946FCD319B4419300D0DA56 /* emoji_video.plist */; };
 		0953AD4D19AC8CE200C093B0 /* VDEmojiPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953AD4C19AC8CE200C093B0 /* VDEmojiPageControl.m */; };
 		0988A93419AB2ECC0037D5C5 /* VDEmojiToolLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988A93319AB2ECC0037D5C5 /* VDEmojiToolLabel.m */; };
 		099C68BA1991D8470021DDF4 /* VDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 099C68B91991D8470021DDF4 /* VDTableViewCell.m */; };
@@ -177,6 +178,7 @@
 		09053ADF198F8FD6002E15AE /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		09053AE1198F901C002E15AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		092B71F219909594003088C9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0946FCD319B4419300D0DA56 /* emoji_video.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emoji_video.plist; sourceTree = "<group>"; };
 		0953AD4B19AC8CE200C093B0 /* VDEmojiPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDEmojiPageControl.h; sourceTree = "<group>"; };
 		0953AD4C19AC8CE200C093B0 /* VDEmojiPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDEmojiPageControl.m; sourceTree = "<group>"; };
 		0988A93219AB2ECC0037D5C5 /* VDEmojiToolLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDEmojiToolLabel.h; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 		099C68BC19920EB10021DDF4 /* emoji */ = {
 			isa = PBXGroup;
 			children = (
+				0946FCD319B4419300D0DA56 /* emoji_video.plist */,
 				099C68BD19920EB10021DDF4 /* emojicustom.plist */,
 				099C68BE19920EB10021DDF4 /* gif */,
 				099C68C019920EB10021DDF4 /* png */,
@@ -703,6 +706,7 @@
 				099C699219920EB10021DDF4 /* o_weiguan@2x.png in Resources */,
 				099C694B19920EB10021DDF4 /* d_han@2x.png in Resources */,
 				099C698A19920EB10021DDF4 /* o_fahongbao@2x.png in Resources */,
+				0946FCD419B4419300D0DA56 /* emoji_video.plist in Resources */,
 				099C696C19920EB10021DDF4 /* d_xixi@2x.png in Resources */,
 				099C699C19920EB10021DDF4 /* w_yueliang@2x.png in Resources */,
 				099C696319920EB10021DDF4 /* d_sikao@2x.png in Resources */,
