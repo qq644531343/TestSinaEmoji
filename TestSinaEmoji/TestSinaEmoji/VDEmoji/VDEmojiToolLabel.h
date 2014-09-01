@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VDEmojiToolLabel : UILabel
+@interface VDEmojiToolLabel : UIView
 
 -(id)initWithFrame:(CGRect)frame textField:(UITextField *)parentfield;
+
+@property (nonatomic,readonly,strong) UILabel *label;
 
 @property (nonatomic,strong) UITextField *parentField;
 
@@ -23,5 +25,7 @@
 
 //右边距 default is 4.0f
 @property (nonatomic,readwrite) float rightMargin;
+
+@property (nonatomic,readwrite) float leftMargin;
  
 @end
