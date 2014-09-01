@@ -31,6 +31,8 @@
 
 @property (nonatomic,strong) NSMutableArray *picViewsMArray;
 
+@property (nonatomic,strong) NSMutableArray *btnViewsMArray;
+
 @property (nonatomic,strong) NSMutableArray *deleteBtnMArray;
 
 @property (nonatomic,strong) UIScrollView *baseScroll;
@@ -72,6 +74,7 @@
     
     
     _picViewsMArray = [[NSMutableArray alloc] init];
+    _btnViewsMArray = [[NSMutableArray alloc] init];
     _deleteBtnMArray = [[NSMutableArray alloc] init];
     
     NSArray *emojies = [[VDEmojiManger sharedVDEmojiManger] getAllEmojies];
@@ -83,26 +86,53 @@
         UIImageView *icon = [[UIImageView alloc] init];
         icon.image = [UIImage imageNamed:model.png];
         icon.tag = i;
+        icon.contentMode = UIViewContentModeScaleAspectFit;
         [_baseScroll addSubview:icon];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click:)];
-        icon.userInteractionEnabled = YES;
-        [icon addGestureRecognizer:tap];
-        
         [self.picViewsMArray addObject:icon];
+        
+        
+        //add
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectZero;
+        [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        [_baseScroll addSubview:btn];
+        btn.tag = i;
+        btn.backgroundColor = [UIColor clearColor];
+        [self.btnViewsMArray addObject:btn];
+        
+
     }
     
     for (int i = 0; i<3; i++) {
         
-        UIImageView *delBtn = [[UIImageView alloc] initWithFrame:CGRectZero];
+        UIView *tapView = [[UIView alloc] initWithFrame:CGRectZero];
+        tapView.backgroundColor = [UIColor clearColor];
+        tapView.clipsToBounds = YES;
+        [_baseScroll addSubview:tapView];
+        
+        UIImageView *delBtn = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        delBtn.tag = 1001;
         delBtn.image = [UIImage imageNamed:@"emojiCancel.png"];
-        [_baseScroll addSubview:delBtn];
+        delBtn.backgroundColor = [UIColor clearColor];
+        [tapView addSubview:delBtn];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteEmoji:)];
-        delBtn.userInteractionEnabled = YES;
-        [delBtn addGestureRecognizer:tap];
+        [tapView addGestureRecognizer:tap];
         
-        [self.deleteBtnMArray addObject:delBtn];
+        [self.deleteBtnMArray addObject:tapView];
+
+        
+//        UIImageView *delBtn = [[UIImageView alloc] initWithFrame:CGRectZero];
+//        delBtn.image = [UIImage imageNamed:@"emojiCancel.png"];
+//        delBtn.backgroundColor = [UIColor redColor];
+//        [_baseScroll addSubview:delBtn];
+//        
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteEmoji:)];
+//        delBtn.userInteractionEnabled = YES;
+//        [delBtn addGestureRecognizer:tap];
+//        
+//        [self.deleteBtnMArray addObject:delBtn];
     }
     
     [self setStyle:VDEmojiViewStyleNormal];
@@ -131,9 +161,9 @@
 
 #pragma mark - tools
 
--(void)click:(UITapGestureRecognizer *)tap
+-(void)click:(UIButton *)btn
 {
-    UIImageView *icon = (UIImageView *)tap.view;
+    UIButton *icon = btn; //(UIImageView *)tap.view;
     NSArray *emojies = [[VDEmojiManger sharedVDEmojiManger] getAllEmojies];
     
     if (icon.tag > emojies.count) {
@@ -219,9 +249,12 @@
                 }
                 
                 UIImageView *icon = [self.picViewsMArray objectAtIndex:index];
-                
+
                 icon.frame = CGRectMake(20 + j*(30 + 20) + page * _baseScroll.frame.size.width, 15+i*(30+15), 30, 30);
                 
+                UIButton *btn = [self.btnViewsMArray objectAtIndex:index];
+                btn.frame = CGRectMake(0, 0, 44, 44);
+                btn.center = icon.center;
             }
         }
         page ++ ;
@@ -243,15 +276,15 @@
     int maxIndx = scrollView.contentSize.width /scrollView.frame.size.width;
     
     UIImageView *icon = [self.deleteBtnMArray objectAtIndex:1];
-    icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + index * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+    icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + index * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     
     if (index - 1 >= 0) {
         UIImageView *icon = [self.deleteBtnMArray objectAtIndex:0];
-        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index-1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index-1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     }
     if (index + 1 <= maxIndx) {
         UIImageView *icon = [self.deleteBtnMArray objectAtIndex:2];
-        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index+1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 30, 30);
+        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index+1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     }
     
 }
