@@ -57,7 +57,7 @@
     self.frame = self.parentField.frame;
     self.font = self.parentField.font;
     self.textColor = self.parentField.textColor;
-    self.layer.cornerRadius = self.parentField.layer.cornerRadius;
+    //self.layer.cornerRadius = self.parentField.layer.cornerRadius;
     
 //    {
 //        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
