@@ -203,7 +203,14 @@
         case VDEmojiViewStyleFullScreen:
         {
             self.frame = VDEmojiSelfLandscapeFrame;
-            [self refreshFrameWithRows:3 columns:11];
+            
+            if (VDEmoji_ScreenSize.height == 480) {
+            //3.5寸屏特殊处理
+                [self refreshFrameWithRows:3 columns:9];
+            }else {
+                [self refreshFrameWithRows:3 columns:11];
+            }
+            
             break;
         }
             
@@ -249,8 +256,11 @@
                 }
                 
                 UIImageView *icon = [self.picViewsMArray objectAtIndex:index];
-
-                icon.frame = CGRectMake(20 + j*(30 + 20) + page * _baseScroll.frame.size.width, 15+i*(30+15), 30, 30);
+                float leftMargin = 20;
+                if (VDEmoji_ScreenSize.height == 480) {
+                    leftMargin = 25;
+                }
+                icon.frame = CGRectMake(leftMargin + j*(30 + 20) + page * _baseScroll.frame.size.width, 15+i*(30+15), 30, 30);
                 
                 UIButton *btn = [self.btnViewsMArray objectAtIndex:index];
                 btn.frame = CGRectMake(0, 0, 44, 44);
@@ -275,16 +285,21 @@
     int index = scrollView.contentOffset.x / scrollView.frame.size.width;
     int maxIndx = scrollView.contentSize.width /scrollView.frame.size.width;
     
+    float leftMargin = 20;
+    if (VDEmoji_ScreenSize.height == 480) {
+        leftMargin = 25;
+    }
+    
     UIImageView *icon = [self.deleteBtnMArray objectAtIndex:1];
-    icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + index * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
+    icon.frame = CGRectMake(leftMargin + (columns-1)*(30 + 20) + index * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     
     if (index - 1 >= 0) {
         UIImageView *icon = [self.deleteBtnMArray objectAtIndex:0];
-        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index-1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
+        icon.frame = CGRectMake(leftMargin + (columns-1)*(30 + 20) + (index-1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     }
     if (index + 1 <= maxIndx) {
         UIImageView *icon = [self.deleteBtnMArray objectAtIndex:2];
-        icon.frame = CGRectMake(20 + (columns-1)*(30 + 20) + (index+1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
+        icon.frame = CGRectMake(leftMargin + (columns-1)*(30 + 20) + (index+1) * _baseScroll.frame.size.width, 15+(rows-1)*(30+15), 44, 44);
     }
     
 }
