@@ -120,8 +120,9 @@
         NSArray *array_string = [self getClearStringFromString:text];
         
         count += array_emoji.count;
+        
         for (NSString *str in array_string) {
-            count += str.length;
+            count += [VDEmojiManger VDChineseCountWords:str];
         }
     }
     return count;
@@ -253,6 +254,29 @@
     }
 
     return nil;
+}
+
+#pragma mark - Tool
+
+
++ (NSUInteger)VDChineseCountWords:(NSString *)text
+{
+    int i, n = [text length], l = 0, a = 0, b = 0;
+    unichar c;
+    
+    for(i = 0; i < n; i++){
+        c = [text characterAtIndex:i];
+        if(isblank(c)){
+            b++;
+        }else if(isascii(c)){
+            a++;
+        }else{
+            l++;
+        }
+    }
+    if(a==0 && l==0) return 0;
+    
+    return l+(int)ceilf((float)(a+b)/2.0);
 }
 
 @end
