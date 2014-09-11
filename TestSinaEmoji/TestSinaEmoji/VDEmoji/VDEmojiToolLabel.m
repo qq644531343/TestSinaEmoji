@@ -7,6 +7,7 @@
 //
 
 #import "VDEmojiToolLabel.h"
+#import "VDEmojiManger.h"
 
 @implementation VDEmojiToolLabel
 
@@ -49,6 +50,7 @@
     if ([keyPath isEqualToString:@"text"]) {
         _label.text = _parentField.text;
         _label.text = [self shortTextWithText:_label.text width:_label.frame.size.width];
+        NSLog(@"count:%d",[[VDEmojiManger sharedVDEmojiManger] countFromEmojiString:_label.text]);
     }
 }
 
@@ -69,7 +71,7 @@
 -(NSString *)shortTextWithText:(NSString *)text width:(float)width
 {
     float allWidth = 0;
-    int i = text.length -1;
+    int i = (int)text.length - 1;
     for (; i>=0; i--) {
         if (allWidth >= width) {
             break;

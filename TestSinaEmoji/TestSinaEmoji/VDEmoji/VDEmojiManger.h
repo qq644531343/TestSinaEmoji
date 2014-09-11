@@ -26,6 +26,9 @@
 //删除最后一个表情
 -(NSString *)deleteEmojiFromString:(NSString *)text;
 
+//计算字符个数(表情算一个字符)
+-(int )countFromEmojiString:(NSString *)text;
+
 -(NSArray *)getAllEmojies;
 
 -(VDEmojiModel *)getEmojiByIndex:(NSInteger)index;

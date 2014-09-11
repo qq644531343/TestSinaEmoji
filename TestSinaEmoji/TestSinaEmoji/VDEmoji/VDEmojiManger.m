@@ -110,6 +110,23 @@
     return text;
 }
 
+//计算字符个数(表情算一个字符)
+-(int )countFromEmojiString:(NSString *)text
+{
+    int  count = 0;
+    if (text.length != 0)
+    {
+        NSArray *array_emoji = [self getEmojiChsFromString:text];
+        NSArray *array_string = [self getClearStringFromString:text];
+        
+        count += array_emoji.count;
+        for (NSString *str in array_string) {
+            count += str.length;
+        }
+    }
+    return count;
+}
+
 -(NSArray *)getAllEmojies
 {
     return self.emojiModel_MArray;

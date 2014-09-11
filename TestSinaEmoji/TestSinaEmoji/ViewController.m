@@ -86,8 +86,9 @@
     label = [[VDEmojiToolLabel alloc] initWithFrame:CGRectNull textField:nil];
     label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:label];
+    label.leftMargin = 40;
+    label.rightMargin = 40;
     label.parentField = field;
-
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardWillShowNotification object:nil];
