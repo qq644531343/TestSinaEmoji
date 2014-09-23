@@ -1,8 +1,3 @@
-//
-//  VDAttributedLabelURL.h
-//  VDAttributedLabel
-//
-
 
 #import <Foundation/Foundation.h>
 #import "VDAttributedLabelDefines.h"

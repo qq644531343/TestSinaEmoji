@@ -1,8 +1,3 @@
-//
-//  NSMutableAttributedString+VD.m
-//  VDAttributedLabel
-//
-
 
 #import "NSMutableAttributedString+VD.h"
 

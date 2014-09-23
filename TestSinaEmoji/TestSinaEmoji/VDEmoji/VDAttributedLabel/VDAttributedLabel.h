@@ -1,7 +1,3 @@
-//
-//  VDAttributedLabel.h
-//  VDAttributedLabel
-//
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
@@ -10,7 +6,7 @@
 
 @class VDAttributedLabelURL;
 
-@interface VDAttributedLabel : UIView<NSCoding>
+@interface VDAttributedLabel : UIView
 @property (nonatomic,weak)    id<VDAttributedLabelDelegate> delegate;
 @property (nonatomic,strong)    UIFont *font;                   //字体
 @property (nonatomic,strong)    UIColor *textColor;             //文字颜色

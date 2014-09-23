@@ -1,7 +1,3 @@
-//
-//  VDAttributedLabelImage.m
-//  VDAttributedLabel
-//
 
 #import "VDAttributedLabelAttachment.h"
 

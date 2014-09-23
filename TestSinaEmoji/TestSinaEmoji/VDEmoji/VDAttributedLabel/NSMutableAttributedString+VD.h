@@ -1,7 +1,4 @@
-//
-//  NSMutableAttributedString+VD.h
-//  VDAttributedLabel
-//
+
 
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>

@@ -1,7 +1,3 @@
-//
-//  VDAttributedLabel.m
-//  VDAttributedLabel
-//
 
 #import "VDAttributedLabel.h"
 #import "VDAttributedLabelAttachment.h"
@@ -39,7 +35,7 @@ static dispatch_queue_t get_VD_attributed_label_parse_queue() \
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self initDatas];
+        [self commonInit];
     }
     return self;
 }
@@ -49,7 +45,7 @@ static dispatch_queue_t get_VD_attributed_label_parse_queue() \
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        [self initDatas];
+        [self commonInit];
     }
     return self;
 }
@@ -64,26 +60,31 @@ static dispatch_queue_t get_VD_attributed_label_parse_queue() \
 }
 
 #pragma mark - 初始化
-- (void)initDatas
+- (void)commonInit
 {
     _attributedString       = [[NSMutableAttributedString alloc]init];
     _attachments                 = [[NSMutableArray alloc]init];
     _linkLocations          = [[NSMutableArray alloc]init];
     _textFrame              = nil;
-    self.linkColor          = [UIColor blueColor];
-    self.font               = [UIFont systemFontOfSize:15];
-    self.textColor          = [UIColor blackColor];
-    self.highlightColor     = [UIColor colorWithRed:0xd7/255.0
+    _linkColor              = [UIColor blueColor];
+    _font                   = [UIFont systemFontOfSize:15];
+    _textColor              = [UIColor blackColor];
+    _highlightColor         = [UIColor colorWithRed:0xd7/255.0
                                               green:0xf2/255.0
                                                blue:0xff/255.0
                                               alpha:1];
-    self.lineBreakMode      = kCTLineBreakByWordWrapping;
-    self.userInteractionEnabled = YES;
-    self.backgroundColor    = [UIColor whiteColor];
+    _lineBreakMode          = kCTLineBreakByWordWrapping;
     _underLineForLink       = YES;
     _autoDetectLinks        = YES;
     _lineSpacing            = 0.0;
     _paragraphSpacing       = 0.0;
+
+    if (self.backgroundColor == nil)
+    {
+        self.backgroundColor = [UIColor whiteColor];
+    }
+    
+    self.userInteractionEnabled = YES;
     [self resetFont];
 }
 
@@ -591,6 +592,12 @@ static dispatch_queue_t get_VD_attributed_label_parse_queue() \
     {
         return CGSizeMake(ceilf(newSize.width) + 2.0, ceilf(newSize.height) + 2.0);
     }
+}
+
+
+- (CGSize)intrinsicContentSize
+{
+    return [self sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds), CGFLOAT_MAX)];
 }
 
 #pragma mark - 

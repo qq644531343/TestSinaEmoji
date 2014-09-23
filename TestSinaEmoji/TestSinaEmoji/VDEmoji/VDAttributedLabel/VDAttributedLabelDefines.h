@@ -1,8 +1,3 @@
-//
-//  VDAttributedLabelDefines.h
-//  VDAttributedLabel
-//
-
 
 #ifndef VDAttributedLabel_VDAttributedLabelDefines_h
 #define VDAttributedLabel_VDAttributedLabelDefines_h
