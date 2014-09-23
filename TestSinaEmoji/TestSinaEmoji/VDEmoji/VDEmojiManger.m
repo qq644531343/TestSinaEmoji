@@ -81,10 +81,16 @@
 }
 
 //删除
--(NSString *)deleteEmojiFromString:(NSString *)text
+-(NSString *)deleteEmojiFromString:(NSString *)text beDelete:(NSString **)beDelete
 {
     if (text.length > 0)
     {
+        if (beDelete == nil) {
+            __autoreleasing NSString *del = nil;
+            beDelete = &del;
+        }
+        *beDelete = [text substringFromIndex:text.length-1];
+        
         if (text.length >= 3 && [[text substringFromIndex:text.length-1] isEqualToString:@"]"])
         {
             NSArray *array_emoji = [self getEmojiChsFromString:text];
@@ -95,6 +101,7 @@
                 NSString *dstString = [text substringFromIndex:text.length - endString.length];
                 
                 if ([endString isEqualToString:dstString] && [self getEmojiByChs:endString]) {
+                    *beDelete = [NSString stringWithString:endString];
                     return [text substringToIndex:text.length - endString.length];
                 }else {
                     return [text substringToIndex:text.length-1];
@@ -176,7 +183,7 @@
 -(BOOL)loadAndParseEmojiPlist
 {
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"emoji_video" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"emojicustom" ofType:@"plist"];
     if (!path)
     {
         NSLog(@"Emoji Error: can't find plist");

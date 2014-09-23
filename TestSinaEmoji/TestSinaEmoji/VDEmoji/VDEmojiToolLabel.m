@@ -50,7 +50,7 @@
     if ([keyPath isEqualToString:@"text"]) {
         _label.text = _parentField.text;
         _label.text = [self shortTextWithText:_label.text width:_label.frame.size.width];
-        NSLog(@"count:%d",[[VDEmojiManger sharedVDEmojiManger] countFromEmojiString:_label.text]);
+        //NSLog(@"count:%d",[[VDEmojiManger sharedVDEmojiManger] countFromEmojiString:_parentField.text]);
     }
 }
 

@@ -24,7 +24,9 @@
 -(BOOL)generateLabelByString:(NSString *)text imageSize:(CGSize)imgsize enableGif:(BOOL)gif label:(VDAttributedLabel *)label;
 
 //删除最后一个表情
--(NSString *)deleteEmojiFromString:(NSString *)text;
+//返回删除后的字符串
+//beDelete为被删除的字符串
+-(NSString *)deleteEmojiFromString:(NSString *)text beDelete:(NSString **)beDelete;
 
 //计算字符个数(表情算一个字符)
 -(int )countFromEmojiString:(NSString *)text;
